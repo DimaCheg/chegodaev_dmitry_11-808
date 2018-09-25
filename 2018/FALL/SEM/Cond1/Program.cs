@@ -2,6 +2,10 @@
 
 namespace Cond1
 {
+    /* автор: Чегодаев Дима
+     * группа 11-808
+     * семинарская задача */
+
     class Program
     {
         static void Main(string[] args)
