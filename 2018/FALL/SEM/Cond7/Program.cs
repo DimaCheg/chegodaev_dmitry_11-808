@@ -29,6 +29,7 @@ namespace Cond7
                 double k = n * (x - y) / (y - 1);
                 if (k % 1 != 0)
                 {
+                    k = k - k % 1;
                     k++;
                 }
                 Console.WriteLine(k);
