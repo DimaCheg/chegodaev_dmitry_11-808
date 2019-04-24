@@ -17,7 +17,6 @@ namespace SemTask2
             GetArea(p.Value, p.Next.Value, q.Next.Value) > GetArea(p.Value, p.Next.Value, q.Value))
                 q = q.Next;
 
-
             var q0 = q;
             var p0 = p;
             while (q != p0)
@@ -28,7 +27,7 @@ namespace SemTask2
                     GetArea(p.Value, p.Next.Value, q.Value))
                 {
                     q = q.Next;
-                    if (p != q0 || q != p0) // .value?
+                    if (p != q0 || q != p0)
                         CheckMax(p, q, ref maxDist);
                 }
                 if (GetArea(p.Value, p.Next.Value, q.Next.Value) ==
@@ -58,7 +57,8 @@ namespace SemTask2
 
         private LinkedList<Point> BuildHull(List<Point> set)
         {
-            if (set.Count == 0) return new LinkedList<Point>();
+            if (set.Count == 0)
+                return new LinkedList<Point>();
             set.Sort();
             List<Point> h = new List<Point>();
 
@@ -66,24 +66,18 @@ namespace SemTask2
             foreach (var pt in set)
             {
                 while (h.Count >= 2 && !Ccw(h[h.Count - 2], h[h.Count - 1], pt))
-                {
                     h.RemoveAt(h.Count - 1);
-                }
                 h.Add(pt);
             }
-
             // upper hull
             int t = h.Count + 1;
             for (int i = set.Count - 1; i >= 0; i--)
             {
                 Point pt = set[i];
                 while (h.Count >= t && !Ccw(h[h.Count - 2], h[h.Count - 1], pt))
-                {
                     h.RemoveAt(h.Count - 1);
-                }
                 h.Add(pt);
             }
-
             h.RemoveAt(h.Count - 1);
             return new LinkedList<Point>(h);
         }
@@ -94,7 +88,7 @@ namespace SemTask2
         }
 
         private Point[] BuildHull1(Point[] set)
-        {
+        { // not used
             return new Point[0];
         }
     }
