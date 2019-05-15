@@ -7,10 +7,12 @@ namespace ControlTest2
 {
     class Task1
     { 
-        public string Root { get; set; }
-        public void Check(string root)
+        public string Root { get; private set; }
+        public DateTime Time { get; private set; }
+        public void Check(string root, DateTime time)
         {
             Root = root;
+            Time = time;
             Thread thread = new Thread(new ThreadStart(Checker));
             thread.Start();
         }
@@ -66,6 +68,8 @@ namespace ControlTest2
             foreach (var path in students)
             {
                 FileInfo fileinfo = new FileInfo(path);
+                if (fileinfo.CreationTime <= Time)
+                    continue;
                 var name = fileinfo.Name.Remove(fileinfo.Name.Length - 4, 4);
                 studResults.Add(name, 0);
 
