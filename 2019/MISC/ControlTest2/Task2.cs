@@ -14,9 +14,10 @@ namespace ControlTest2
                 json = sr.ReadToEnd();
             }
             Letter[] let = JsonConvert.DeserializeObject<Letter[]>(json);
-            for (int i=0; i< let.Length; i += 2)
+            for (int i = 1; i < let.Length; i += 2)
             {
-                Console.WriteLine($"комментарий {i}: " + let[i].body.Length + "символов");
+                var count = let[i].body.Where(c => char.IsLetter(c)).Count();
+                Console.WriteLine($"комментарий {i + 1}: " + count + "букв");
             }
         }        
     }
