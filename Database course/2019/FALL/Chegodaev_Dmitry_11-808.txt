@@ -1,0 +1,9 @@
+﻿database test.
+
+1)
+SET search_path = bookings;
+CREATE TABLE answer1 AS
+	SELECT * FROM flights
+	WHERE departure_airport = 'DME' AND
+		(actual_departure::date = '2016-09-10'::date OR
+		 actual_departure::date = '2016-09-14'::date);
